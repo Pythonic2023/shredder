@@ -2,23 +2,26 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <unistd.h>
 
 void over_write(const char *string_buffer, char *);
 
-char *file_type(const char *string_buffer, char *file){
+int file_type(const char *string_buffer){
+	char *file = "hello";
 	struct stat bf;
 	stat(string_buffer, &bf);
+	printf("FILE!!!!!!!!!!!!!!!!!!!: %s\n", file);
 
-	if(S_ISREG(bf.st_mode)){
-		char *strptr = strrchr(string_buffer, '/');
-		strptr++;
+	char *strptr = strrchr(string_buffer, '/');
+	strptr++;
 
-		if(strcmp(strptr, file) == 0){
-			/*printf("Found: %s\n", strptr);*/
-			over_write(string_buffer, file);
-		}
+	printf("STRPTR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: %s\n", strptr);
 
-		}
+	if(strcmp(strptr, file) == 0){
+		/*printf("Found: %s\n", strptr);*/
+		over_write(string_buffer, file);
+	}
+	return 1;
 }
 
 void over_write(const char *string_buffer, char *file){

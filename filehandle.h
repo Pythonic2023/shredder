@@ -3,4 +3,4 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char *file_type(const char *, char *file);
+int file_type(const char *);
