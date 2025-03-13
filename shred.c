@@ -2,6 +2,8 @@
 #include "dir_handle.h"
 #include <stdlib.h>
 
+#define DIRECTORY "/home/cipher"
+
 /* Function for open dir DONE */
 
 
@@ -28,5 +30,5 @@ int main(int argc, char *argv[]){
 		printf("Usage: shred <file_name>\n");
 		exit(-1);
 	}
-	open_dir(argv[1]);
+	open_dir(argv[1], DIRECTORY);
 }

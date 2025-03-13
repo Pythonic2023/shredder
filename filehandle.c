@@ -3,22 +3,19 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void over_write(const char *string_buffer, char *);
 
-int file_type(const char *string_buffer){
-	char *file = "hello";
+int file_type(const char *string_buffer, char *file){
 	struct stat bf;
 	stat(string_buffer, &bf);
-	printf("FILE!!!!!!!!!!!!!!!!!!!: %s\n", file);
 
 	char *strptr = strrchr(string_buffer, '/');
 	strptr++;
 
-	printf("STRPTR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: %s\n", strptr);
-
 	if(strcmp(strptr, file) == 0){
-		/*printf("Found: %s\n", strptr);*/
+		printf("Found: %s\n", strptr);
 		over_write(string_buffer, file);
 	}
 	return 1;
@@ -36,7 +33,8 @@ void over_write(const char *string_buffer, char *file){
 		printf("[EXITING]\n");
 	}
 	else if(strcmp(buffer, "y") == 0){
-		printf("[OVERWRITING...]\n");
+		printf("[OVERWRITING...]\n");	
+		exit(0);
 	}
 	else{
 		printf("[y/n]");
