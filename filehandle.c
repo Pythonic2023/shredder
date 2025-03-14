@@ -39,6 +39,7 @@ void over_write(const char *string_buffer, char *file){
 		fseek(file_stream, 0, SEEK_END);
 		long size = ftell(file_stream);
 		fseek(file_stream, 0, SEEK_SET);
+		fclose(file_stream);
 		char command_buffer[1024];
 		snprintf(command_buffer, sizeof(command_buffer), "dd if=/dev/zero of=%s bs=1 count=%ld", string_buffer, size);
 		

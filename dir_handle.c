@@ -44,6 +44,6 @@ void open_dir(char *file, char *directory){
 			open_dir(file, full_path);
 		}
 	}
-
+	closedir(dir_stream);
 	return;
 }
